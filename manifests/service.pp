@@ -1,7 +1,10 @@
 
 #include fusion inventory
 
-class fusioninventory::service inherits fusioninventory {
+class fusioninventory::service {
+  $no_proxy   = $::fusioninventory::no_proxy
+  $server_url = $::fusioninventory::server_url
+
   file { '/etc/fusioninventory/agent.cfg':
     ensure  => 'file',
     owner   => 'root',
@@ -11,8 +14,8 @@ class fusioninventory::service inherits fusioninventory {
   }
   notify { 'Template Fusion agent.cfg done': }
 
-  service { $::pkgfusion :
-    ensure =>  $::service_ensure,
-    enable =>  $::service_enable,
+  service { $::fusioninventory::pkgfusion :
+    ensure =>  $::fusioninventory::service_ensure,
+    enable =>  $::fusioninventory::service_enable,
   }
 }
