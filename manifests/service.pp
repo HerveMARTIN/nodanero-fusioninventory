@@ -12,7 +12,6 @@ class fusioninventory::service {
     mode    => '0755',
     content => template('fusioninventory/agent.cfg.erb'),
   }
-  notify { 'Template Fusion agent.cfg done': }
 
   service { $::fusioninventory::pkgfusion :
     ensure =>  $::fusioninventory::service_ensure,
