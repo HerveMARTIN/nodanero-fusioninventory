@@ -9,7 +9,7 @@ class fusioninventory::install {
         '/add-firewall-exception=yes',
         '/execmode=service',
         '/installtasks=Full',
-        "/server=${fusioninventory::params::server_url}",
+        "/server=${::fusioninventory::params::server_url}",
       ]
       package { $::fusioninventory::pkgfusion:
         ensure          => installed,
