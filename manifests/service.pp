@@ -11,6 +11,7 @@ class fusioninventory::service {
     group   => 'root',
     mode    => '0755',
     content => template('fusioninventory/agent.cfg.erb'),
+    notify  => Service[$::fusioninventory::pkgfusion],
   }
 
   service { $::fusioninventory::pkgfusion :
